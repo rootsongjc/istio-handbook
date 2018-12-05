@@ -1,11 +1,5 @@
 # xDS 协议解析
 
-> 原文地址：https://github.com/envoyproxy/data-plane-api/blob/master/XDS_PROTOCOL.md
->
-> 译者：狄卫华
->
-> 审校：宋净超
-
 Envoy 通过查询文件或管理服务器来动态发现资源。概括地讲，对应的发现服务及其相应的 API 被称作 _xDS_。Envoy 通过订阅（_subscription_）方式来获取资源，如监控指定路径下的文件、启动 gRPC 流或轮询 REST-JSON URL。后两种方式会发送 [`DiscoveryRequest`](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/discovery.proto#discoveryrequest) 请求消息，发现的对应资源则包含在响应消息 [`DiscoveryResponse`](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/discovery.proto#discoveryresponse) 中。下面，我们将具体讨论每种订阅类型。
 
 ## 文件订阅
@@ -217,6 +211,10 @@ xDS 增量会话始终位于 gRPC 双向流的上下文中。这允许 xDS 服�
 
 ## REST-JSON 轮询订阅
 
-单个 xDS  API 可对 REST 端点进行的同步（长）轮询。除了无持久流与管理服务器交互外，消息顺序与上述相似。在任何时间点，只存在一个未完成的请求，因此响应消息中的 `nonce` 在 REST-JSON 中是可选的。`DiscoveryRequest` 和 `DiscoveryResponse` 的消息编码遵循 [JSON 变换 proto3](https://developers.google.com/protocol-buffers/docs/proto3#json) 规范。ADS 不支持 REST-JSON 轮询。
+单个 xDS  API 可对 REST 端点进行同步（长）轮询。除了无持久流与管理服务器交互外，消息顺序与上述相似。在任何时间点，只存在一个未完成的请求，因此响应消息中的 `nonce` 在 REST-JSON 中是可选的。`DiscoveryRequest` 和 `DiscoveryResponse` 的消息编码遵循 [JSON 变换 proto3](https://developers.google.com/protocol-buffers/docs/proto3#json) 规范。ADS 不支持 REST-JSON 轮询。
 
 当轮询期间设置为较小的值时，则可以等同于长轮询，这时要求避免发送 `DiscoveryResponse`，[除非对请求的资源发生了更改](#何时发送更新)。
+
+---
+
+本文译自[xDS REST and gRPC protocol](https://github.com/envoyproxy/data-plane-api/blob/master/XDS_PROTOCOL.md)，译者：狄卫华，审校：宋净超
