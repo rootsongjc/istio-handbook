@@ -12,15 +12,21 @@
   - [Istio 架构解析](concepts/istio-architecture.md)
 - [Sidecar 模式](concepts/sidecar-pattern.md)
   - [Istio 中的 Sidecar 注入详解](concepts/sidecar-injection-deep-dive.md)
-- [Envoy xDS](concepts/envoy-xds.md)
-  - [xDS 协议解析](concepts/envoy-xds-protocol.md)
-  - [LDS（监听器发现服务）](concepts/envoy-lds.md)
-  - [RDS（路由发现服务）](concepts/envoy-rds.md)
-  - [CDS（集群发现服务）](concepts/envoy-cds.md)
-  - [EDS（端点发现服务）](concepts/envoy-eds.md)
-  - [SDS（秘钥发现服务）](concepts/envoy-sds.md)
 - [流量管理](concepts/traffic-management.md)
   - [流量管理基础概念](concepts/traffic-management-basic.md)
+
+## 数据平面
+
+- [Envoy 中的基本术语](data-plane/envoy-terminology.md)
+- [Envoy xDS](data-plane/envoy-xds.md)
+  - [xDS 协议解析](data-plane/envoy-xds-protocol.md)
+  - [LDS（监听器发现服务）](data-plane/envoy-lds.md)
+  - [RDS（路由发现服务）](data-plane/envoy-rds.md)
+  - [CDS（集群发现服务）](data-plane/envoy-cds.md)
+  - [EDS（端点发现服务）](data-plane/envoy-eds.md)
+  - [SDS（秘钥发现服务）](data-plane/envoy-sds.md)
+
+## 控制平面
 
 ## 安装指南
 
@@ -35,5 +41,3 @@
 ## 实践案例
 
 - [Bookinfo 示例](action/bookinfo-sample.md)
-
-## 采用路径
