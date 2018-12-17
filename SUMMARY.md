@@ -18,6 +18,8 @@
 ## 数据平面
 
 - [Envoy 中的基本术语](data-plane/envoy-terminology.md)
+- [Istio sidecar proxy 配置](data-plane/istio-sidecar-proxy-config.md)
+- [Envoy proxy 配置详解](data-plane/envoy-proxy-config-deep-dive.md)
 - [Envoy xDS](data-plane/envoy-xds.md)
   - [xDS 协议解析](data-plane/envoy-xds-protocol.md)
   - [LDS（监听器发现服务）](data-plane/envoy-lds.md)
@@ -25,6 +27,7 @@
   - [CDS（集群发现服务）](data-plane/envoy-cds.md)
   - [EDS（端点发现服务）](data-plane/envoy-eds.md)
   - [SDS（秘钥发现服务）](data-plane/envoy-sds.md)
+  - [ADS（聚合发现服务）](data-plane/envoy-ads.md)
 
 ## 控制平面
 
