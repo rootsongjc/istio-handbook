@@ -8,7 +8,9 @@ kubectl -n default exec ratings-v1-7c9949d479-dwkr4 -c istio-proxy curl http://l
 
 将 Envoy 的运行时配置 dump 出来之后你将看到一个长 6000 余行的配置文件。关于该配置文件的介绍请参考 [Envoy v2 API 概览](http://www.servicemesher.com/envoy/configuration/overview/v2_overview.html)。
 
-![Istio envoy sidecar proxy config](https://ws2.sinaimg.cn/large/006tNbRwly1fxtrc1vn0wj32eu0hmjzf.jpg)
+下图展示的是 Enovy 的配置。
+
+![Envoy 配置](https://ws3.sinaimg.cn/large/006tNbRwly1fyb74brsd5j30xg0lojvt.jpg)
 
 Istio 会在为 Service Mesh 中的每个 Pod 注入 Sidecar 的时候同时为 Envoy 注入 Bootstrap 配置，其余的配置是通过 Pilot 下发的，注意整个数据平面即 Service Mesh 中的 Envoy 的动态配置应该是相同的。您也可以使用上面的命令检查其他 sidecar 的 Envoy 配置是否跟最上面的那个相同。
 
