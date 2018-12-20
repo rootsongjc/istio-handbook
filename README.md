@@ -23,9 +23,11 @@
 
 ## 版权
 
-![Istio Handbook——Istio服务网格实践指南](cover.jpg)
+<a href="https://jimmysong.io/istio-handbook">
+  <img src="cover.jpg" width="40%" alt="Istio handbook - istio服务网格实践指南" />
+</a>
 
-上图为本书概念图，封面图片[上海静安寺夜景](https://jimmysongio.tuchong.com/24318231/)，[Jimmy Song](https://jimmysong.iio)摄。
+本书概念图，封面图片[上海静安寺夜景](https://jimmysongio.tuchong.com/24318231/)，[Jimmy Song](https://jimmysong.io) 摄。
 
 本书发行版权归属于电子工业出版社博文视点，未经授权请勿私自印刷发行。
 
