@@ -29,7 +29,8 @@
         "-highlight", "prism", "prism-themes",
         "sitemap-general",
         "lightbox",
-        "adsense"
+        "adsense",
+        "ga"
     ],
     "pluginsConfig": {
         "theme-default": {
@@ -76,6 +77,9 @@
             "format": "auto",
             "element": ".page-inner section",
             "position": "bottom"
+        },
+        "ga": {
+            "token": "UA-93485976-1"
         }
     }
 }
