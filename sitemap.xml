@@ -9,6 +9,7 @@
 <url> <loc>https://jimmysong.io/istio-handbook/concepts/sidecar-injection-deep-dive.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/concepts/traffic-management.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/concepts/traffic-management-basic.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://jimmysong.io/istio-handbook/concepts/sidecar-traffic-routing-deep-dive.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/data-plane/envoy-terminology.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/data-plane/istio-sidecar-proxy-config.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/data-plane/envoy-proxy-config-deep-dive.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
