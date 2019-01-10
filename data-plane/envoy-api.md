@@ -1,4 +1,21 @@
-# Envoy xDS
+# Envoy API
+
+Envoy 提供了如下的 API：
+
+- CDS（Cluster Discovery Service）：集群发现服务
+- EDS（Endpoint Discovery Service）：端点发现服务
+- HDS（Health Discovery Service）：健康发现服务
+- LDS（Listener Discovery Service）：监听器发现服务
+- MS（Metric Service）：将 metric 推送到远端服务器
+- RLS（Rate Limit Service）：速率限制服务
+- RDS（Route Discovery Service）：路由发现服务
+- SDS（Secret Discovery Service）：秘钥发现服务
+
+所有名称以 DS 结尾的服务统称为 xDS。
+
+本书中仅讨论 v2 版本的 API，因为 Envoy 仍在不断开发和完善中，随着版本迭代也有可能新增一些 API，本章的重点在于 xDS 协议，关于 Envoy 的 API 的更多信息请参考 [Envoy v2 APIs for developers](https://github.com/envoyproxy/envoy/blob/master/api/API_OVERVIEW.md)。
+
+## Envoy xDS 协议
 
 Envoy xDS 为 Istio 控制平面与控制平面通信的基本协议，只要代理支持该协议表达形式就可以创建自己 Sidecar 来替换 Envoy。这一章中将带大家了解 Envoy xDS。
 
@@ -20,8 +37,11 @@ $ /usr/local/bin/envoy -c /etc/istio/proxy/envoy-rev0.json --restart-epoch 0 --d
 
 上面是都 Bookinfo 示例中的 rating pod 中的 sidecar 启动的分析，可以看到其中指定了 `--v2-config-only`，表明 Istio 1.0+ 只支持 xDS v2 的 API。
 
+## REST-JSON & gPRC API
 
+单个的基本 xDS 订阅服务，如 CDS、EDS、LDS、RDS、SDS 同时支持 REST-JSON 和 gRPC API 配置。高级 API，如 HDS、ADS 和 EDS 多维 LB 仅支持 gRPC。这是为了避免将复杂的双向流语义映射到 REST。详见 [Envoy v2 APIs for developers](https://github.com/envoyproxy/envoy/blob/master/api/API_OVERVIEW.md)。
 
 ## 参考
 
 - [Service Mesh 中的通用数据平面 API 设计 - servicemesher.com](http://www.servicemesher.com/blog/the-universal-data-plane-api/)
+- [Envoy v2 APIs for developers - github.com](https://github.com/envoyproxy/envoy/blob/master/api/API_OVERVIEW.md)

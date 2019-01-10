@@ -1,6 +1,6 @@
 # xDS 协议解析
 
-> 本文译自[xDS REST and gRPC protocol](https://github.com/envoyproxy/data-plane-api/blob/master/XDS_PROTOCOL.md)，译者：狄卫华，审校：宋净超
+> 本文译自 [xDS REST and gRPC protocol](https://github.com/envoyproxy/data-plane-api/blob/master/XDS_PROTOCOL.md)，译者：狄卫华，审校：宋净超
 
 Envoy 通过查询文件或管理服务器来动态发现资源。概括地讲，对应的发现服务及其相应的 API 被称作 _xDS_。Envoy 通过订阅（_subscription_）方式来获取资源，如监控指定路径下的文件、启动 gRPC 流或轮询 REST-JSON URL。后两种方式会发送 [`DiscoveryRequest`](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/discovery.proto#discoveryrequest) 请求消息，发现的对应资源则包含在响应消息 [`DiscoveryResponse`](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/discovery.proto#discoveryresponse) 中。下面，我们将具体讨论每种订阅类型。
 
@@ -77,7 +77,7 @@ nonce: A
 
 Envoy 在处理 `DiscoveryResponse` 响应后，将通过流发送一个新的请求，请求包含应用成功的最后一个版本号和管理服务器提供的 `nonce`。如果本次更新已成功应用，则 `version_info` 的值设置为 __X__，如下序列图所示：
 
-![Version update after ACK](https://ws1.sinaimg.cn/mw690/7e0ee03agy1fvmxs5aod1j20cc06y74c.jpg)
+![ACK 后的版本更新](https://ws1.sinaimg.cn/mw690/7e0ee03agy1fvmxs5aod1j20cc06y74c.jpg)
 
 在此序列图及后续中，将统一使用以下缩写格式：
 
@@ -88,11 +88,11 @@ Envoy 在处理 `DiscoveryResponse` 响应后，将通过流发送一个新的�
 
 版本为 Envoy 和管理服务器提供了共享当前应用配置的概念和通过 ACK/NACK 来进行配置更新的机制。如果 Envoy 拒绝配置更新 __X__，则回复 [`error_detail`](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/discovery.proto#envoy-api-field-discoveryrequest-error-detail) 及前一个的版本号，在当前情况下为空的初始版本号，`error_detail` 包含了有关错误的更加详细的信息：
 
-![No version update after NACK](https://ws1.sinaimg.cn/mw690/7e0ee03agy1fvmxtjqtcsj20cc06y0ss.jpg)
+![NACK 无版本更新](https://ws1.sinaimg.cn/mw690/7e0ee03agy1fvmxtjqtcsj20cc06y0ss.jpg)
 
 后续，API 更新可能会在新版本 __Y__ 上成功：
 
-![ACK after NACK](https://ws1.sinaimg.cn/mw690/7e0ee03agy1fvmxtwzc96j20cc0923yp.jpg)
+![ACK 紧接着 NACK](https://ws1.sinaimg.cn/mw690/7e0ee03agy1fvmxtwzc96j20cc0923yp.jpg)
 
 每个流都有自己的版本概念，但不存在跨资源类型的共享版本。在不使用 ADS 的情况下，每个资源类型可能具有不同的版本，因为 Envoy API 允许指向不同的 EDS/RDS 资源配置并对应不同的 `ConfigSources`。
 
@@ -114,22 +114,22 @@ LDS/CDS 资源提示信息将始终为空，并且期望管理服务器的每个
 
 对于 EDS/RDS ，Envoy 可以为每个给定类型的资源生成不同的流（如每个 `ConfigSource` 都有自己的上游管理服务器的集群）或当指定资源类型的请求发送到同一个管理服务器的时候，允许将多个资源请求组合在一起发送。虽然可以单个实现，但管理服务器应具备处理每个给定资源类型中对单个或多个 `resource_names`  请求的能力。下面的两个序列图对于获取两个 EDS 资源都是有效的 `{foo，bar}`：
 
-![Multiple EDS requests on the same stream](https://ws1.sinaimg.cn/mw690/7e0ee03agy1fvmxuviiqsj20eh06ymx9.jpg)
-![Multiple EDS requests on distinct streams](https://ws1.sinaimg.cn/mw690/7e0ee03agy1fvmxv7cv21j20j20a4wet.jpg)
+![一个流上多个 EDS 请求](https://ws1.sinaimg.cn/mw690/7e0ee03agy1fvmxuviiqsj20eh06ymx9.jpg)
+![不同流上的多个 EDS 请求](https://ws1.sinaimg.cn/mw690/7e0ee03agy1fvmxv7cv21j20j20a4wet.jpg)
 
 #### 资源更新
 
 如上所述，Envoy 可能会更新  `DiscoveryRequest` 中出现的 `resource_names` 列表，其中 `DiscoveryRequest`  是用来 ACK/NACK 管理服务器的特定的 `DiscoveryResponse` 。此外，Envoy 后续可能会发送额外的 `DiscoveryRequests` ，用于在特定 `version_info` 上使用新的资源提示来更新管理服务器。例如，如果 Envoy 在 EDS 版本 __X__ 时仅知道集群 `foo`，但在随后收到的 CDS 更新时额外获取了集群 `bar` ，它可能会为版本 __X__ 发出额外的 `DiscoveryRequest` 请求，并将 `{foo，bar}` 作为请求的 `resource_names` 。
 
-![CDS response leads to EDS resource hint update](https://ws1.sinaimg.cn/large/006tNc79ly1fvph0p7u8zj31fm0lq0ve.jpg)
+![CDS 响应导致 EDS 资源更新](https://ws1.sinaimg.cn/large/006tNc79ly1fvph0p7u8zj31fm0lq0ve.jpg)
 
 这里可能会出现竞争状况；如果 Envoy 在版本 __X__ 上发布了资源提示更新请求，但在管理服务器处理该请求之前发送了新的版本号为 __Y__  的响应，针对 `version_info` 为 __X__ 的版本，资源提示更新可能会被解释为拒绝  __Y__ 。为避免这种情况，通过使用管理服务器提供的 `nonce`，Envoy 可用来保证每个 `DiscoveryRequest` 对应到相应的 `DiscoveryResponse` ：
 
-![EDS update race motivates nonces](https://ws4.sinaimg.cn/large/006tNc79ly1fvph04ln3fj31kw0rogqc.jpg)
+![EDS 更新速率激发 nonces](https://ws4.sinaimg.cn/large/006tNc79ly1fvph04ln3fj31kw0rogqc.jpg)
 
 管理服务器不应该为含有过期 `nonce` 的 `DiscoveryRequest` 发送 `DiscoveryResponse` 响应。在向 Envoy 发送的 `DiscoveryResponse`  中包含了的新 `nonce` ，则此前的 `nonce` 将过期。在资源新版本就绪之前，管理服务器不需要向 Envoy 发送更新。同版本的早期请求将会过期。在新版本就绪时，管理服务器可能会处理同一个版本号的多个 `DiscoveryRequests`请求。
 
-![Requests become stale](https://ws3.sinaimg.cn/large/006tNc79ly1fvpgy6xewrj31b415ctcy.jpg)
+![请求变的陈旧](https://ws3.sinaimg.cn/large/006tNc79ly1fvpgy6xewrj31b415ctcy.jpg)
 
 上述资源更新序列表明 Envoy 并不能期待其发出的每个 `DiscoveryRequest` 都得到 `DiscoveryResponse` 响应。
 
@@ -153,7 +153,7 @@ LDS/CDS 资源提示信息将始终为空，并且期望管理服务器的每个
 
 当管理服务器进行资源分发时，通过上述保证交互顺序的方式来避免流量丢弃是一项很有挑战的工作。ADS 允许单一管理服务器通过单个 gRPC 流，提供所有的 API 更新。配合仔细规划的更新顺序，ADS 可规避更新过程中流量丢失。使用 ADS，在单个流上可通过类型 URL 来进行复用多个独立的 `DiscoveryRequest`/`DiscoveryResponse` 序列。对于任何给定类型的 URL，以上 `DiscoveryRequest` 和 `DiscoveryResponse` 消息序列都适用。 更新序列可能如下所示：
 
-![EDS/CDS multiplexed on an ADS stream](https://ws2.sinaimg.cn/large/006tNc79ly1fvpgxnl947j313q0wgq62.jpg)
+![EDS/CDS 在一个 ADS 流上多路复用](https://ws2.sinaimg.cn/large/006tNc79ly1fvpgxnl947j313q0wgq62.jpg)
 
 每个 Envoy 实例可使用单独的 ADS 流。
 
@@ -205,11 +205,11 @@ xDS 增量会话始终位于 gRPC 双向流的上下文中。这允许 xDS 服�
 
 在第一个示例中，客户端连接并接收它的第一个更新并 ACK。第二次更新失败，客户端发送 NACK 拒绝更新。xDS客户端后续会自发地请求 “wc” 相关资源。
 
-![Incremental session example](https://ws4.sinaimg.cn/large/006tNc79ly1fvpgwfbep7j31kw0vldli.jpg)
+![增量 session 示例](https://ws4.sinaimg.cn/large/006tNc79ly1fvpgwfbep7j31kw0vldli.jpg)
 
 在重新连接时，支持增量的 xDS 客户端可能会告诉服务器其已知资源从而避免通过网络重新发送它们。
 
-![Incremental reconnect example](https://ws2.sinaimg.cn/large/006tNc79ly1fvpgx05z3kj31kw0phwif.jpg)
+![增量重连示例](https://ws2.sinaimg.cn/large/006tNc79ly1fvpgx05z3kj31kw0phwif.jpg)
 
 ## REST-JSON 轮询订阅
 
