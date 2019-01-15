@@ -2,6 +2,16 @@
 
 在使用 Istio 前还是希望您有容器和 Kubernetes 的基础知识，如果您想要从零开始，那么可以使用 [**kubernetes-vagrant-centos-cluster**](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) 并运行 [Bookinfo 应用](https://istio.io/zh/docs/examples/bookinfo/)来快速体验服务网格。
 
+当我们需要在本地开发时，更希望能够有一个开箱即用又可以方便定制的分布式开发环境，这样才能对Kubernetes本身和应用进行更好的测试。现在我们使用[Vagrant](https://www.vagrantup.com/)和[VirtualBox](https://www.virtualbox.org/wiki/Downloads)来创建一个这样的环境。
+
+**注意**：kube-proxy使用ipvs模式。
+
+## Demo
+
+点击下面的图片观看视频。
+
+[![观看视频](https://ws4.sinaimg.cn/large/006tNbRwly1fyq0a5nx1pj30zk0k0whm.jpg)](https://www.bilibili.com/video/av39514214/)
+
 ## 准备环境
 
 需要准备以下软件和环境：
@@ -9,8 +19,8 @@
 - 8G以上内存
 - Vagrant 2.0+
 - VirtualBox 5.0 +
-- 提前下载Kubernetes 1.9以上版本（支持最新的1.11.0）的release压缩包
-- Mac/Linux，**不支持Windows**
+- 提前下载Kubernetes 1.9以上版本（支持最新的1.13.0）的release压缩包
+- Mac/Linux，**Windows不完全支持，仅在windows10下通过**
 
 ## 集群
 
@@ -33,16 +43,17 @@ Kubernetes service IP 地址范围：10.254.0.0/16
 安装完成后的集群包含以下组件：
 
 - flannel（`host-gw`模式）
+- kubernetes dashboard
 - etcd（单节点）
 - kubectl
 - CoreDNS
-- Kubernetes（版本根据下载的 kubernetes 安装包而定，支持 Kubernetes 1.9+）
-
-- Istio
+- kubernetes（版本根据下载的kubernetes安装包而定，支持Kubernetes1.9+）
 
 **可选插件**
 
-- Kubernetes dashboard
+- Heapster + InfluxDB  + Grafana
+- ElasticSearch + Fluentd + Kibana
+- Istio service mesh
 - Helm
 - Vistio
 - Kiali
@@ -54,10 +65,11 @@ Kubernetes service IP 地址范围：10.254.0.0/16
 ```bash
 git clone https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster.git
 cd kubernetes-vagrant-centos-cluster
-wget https://storage.googleapis.com/kubernetes-release/release/v1.11.0/kubernetes-server-linux-amd64.tar.gz
 ```
 
-注：您可以在[这里](https://kubernetes.io/docs/imported/release/notes/)找到Kubernetes的发行版下载地址。
+**注意**：如果您是第一次运行该部署程序，那么可以直接执行下面的命令，它将自动帮你下载 Kubernetes 安装包，下一次你就不需要自己下载了，另外您也可以在[这里](https://kubernetes.io/docs/imported/release/notes/)找到Kubernetes的发行版下载地址，下载 Kubernetes发行版后重命名为`kubernetes-server-linux-amd64.tar.gz`，并移动到该项目的根目录下。
+
+因为该项目是使用 NFS 的方式挂载到虚拟机的 `/vagrant` 目录中的，所以在安装 NFS 的时候需要您输入密码授权。
 
 使用vagrant启动集群。
 
@@ -77,6 +89,55 @@ vagrant box add CentOS-7-x86_64-Vagrant-1801_02.VirtualBox.box --name centos/7
 ```
 
 这样下次运行`vagrant up`的时候就会自动读取本地的`centos/7` box而不会再到网上下载。
+
+**Windows 安装特别说明**
+
+执行`vagrant up`之后会有如下提示：
+
+```
+G:\code\kubernetes-vagrant-centos-cluster>vagrant up
+Bringing machine 'node1' up with 'virtualbox' provider...
+Bringing machine 'node2' up with 'virtualbox' provider...
+Bringing machine 'node3' up with 'virtualbox' provider...
+==> node1: Importing base box 'centos/7'...
+==> node1: Matching MAC address for NAT networking...
+==> node1: Setting the name of the VM: node1
+==> node1: Clearing any previously set network interfaces...
+==> node1: Specific bridge 'en0: Wi-Fi (AirPort)' not found. You may be asked to specify
+==> node1: which network to bridge to.
+==> node1: Available bridged network interfaces:
+1) Realtek PCIe GBE Family Controller
+2) TAP-Windows Adapter V9
+==> node1: When choosing an interface, it is usually the one that is
+==> node1: being used to connect to the internet.
+    node1: Which interface should the network bridge to?
+    node1: Which interface should the network bridge to?
+    
+```
+
+输入`1`之后按回车继续。（根据自己真实网卡选择，node2、node3同样需要）
+
+node3快要结束的时候可能会有如下错误：
+
+```
+node3: Created symlink from /etc/systemd/system/multi-user.target.wants/kubelet.service to /usr/lib/systemd/system/kubelet.service.
+    node3: Created symlink from /etc/systemd/system/multi-user.target.wants/kube-proxy.service to /usr/lib/systemd/system/kube-proxy.service.
+    node3: deploy coredns
+    node3: /tmp/vagrant-shell: ./dns-deploy.sh: /bin/bash^M: bad interpreter: No such file or directory
+    node3: error: no objects passed to apply
+    node3: /home/vagrant
+```
+
+解决方法：
+
+```bash
+vagrant ssh node3
+sudo -i
+cd /vagrant/addon/dns
+yum -y install dos2unix
+dos2unix dns-deploy.sh
+./dns-deploy.sh -r 10.254.0.0/16 -i 10.254.0.2 |kubectl apply -f -
+```
 
 ### 访问kubernetes集群
 
@@ -116,9 +177,9 @@ sudo -i
 kubectl get nodes
 ```
 
-**Kubernetes dashboard（可选安装）**
+**Kubernetes dashboard**
 
-还可以直接通过dashboard UI来访问：[https://172.17.8.101:8443](https://172.17.8.101:8443/)
+还可以直接通过dashboard UI来访问：https://172.17.8.101:8443
 
 可以在本地执行以下命令获取token的值（需要提前安装kubectl）：
 
@@ -132,7 +193,47 @@ kubectl -n kube-system describe secret `kubectl -n kube-system get secret|grep a
 
 只有当你安装了下面的heapster组件后才能看到上图中的监控metrics。
 
+**Windows下Chrome/Firefox访问**
+
+如果提示`NET::ERR_CERT_INVALID`，则需要下面的步骤
+
+进入本项目目录
+
+```
+vagrant ssh node1
+sudo -i
+cd /vagrant/addon/dashboard/
+mkdir certs
+openssl req -nodes -newkey rsa:2048 -keyout certs/dashboard.key -out certs/dashboard.csr -subj "/C=/ST=/L=/O=/OU=/CN=kubernetes-dashboard"
+openssl x509 -req -sha256 -days 365 -in certs/dashboard.csr -signkey certs/dashboard.key -out certs/dashboard.crt
+kubectl delete secret kubernetes-dashboard-certs -n kube-system
+kubectl create secret generic kubernetes-dashboard-certs --from-file=certs -n kube-system
+kubectl delete pods $(kubectl get pods -n kube-system|grep kubernetes-dashboard|awk '{print $1}') -n kube-system #重新创建dashboard
+```
+
+刷新浏览器之后点击`高级`，选择跳过即可打开页面。
+
 ### 组件
+
+**Heapster监控**
+
+创建Heapster监控：
+
+```bash
+kubectl apply -f addon/heapster/
+```
+
+访问Grafana
+
+使用Ingress方式暴露的服务，在本地`/etc/hosts`中增加一条配置：
+
+```ini
+172.17.8.102 grafana.jimmysong.io
+```
+
+访问Grafana：<http://grafana.jimmysong.io>
+
+![Grafana 界面](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/grafana-animation.gif)
 
 **Traefik**
 
@@ -152,6 +253,16 @@ kubectl apply -f addon/traefik-ingress
 
 ![Traefik Ingress controller](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/traefik-ingress.gif)
 
+**EFK**
+
+使用EFK做日志收集。
+
+```bash
+kubectl apply -f addon/efk/
+```
+
+**注意**：运行EFK的每个节点需要消耗很大的CPU和内存，请保证每台虚拟机至少分配了4G内存。
+
 **Helm**
 
 用来部署helm。
@@ -160,13 +271,13 @@ kubectl apply -f addon/traefik-ingress
 hack/deploy-helm.sh
 ```
 
-### 安装 Istio
+### Service Mesh
 
-我们以安装 [istio](https://istio.io/) 1.0 为例。
+我们使用 [istio](https://istio.io) 作为 service mesh。
 
 **安装**
 
-到 [Istio release](https://github.com/istio/istio/releases) 页面下载 istio 的安装包，安装 istio 命令行工具，将 `istioctl` 命令行工具放到你的`$PATH`目录下，对于 Mac 用户：
+到[Istio release](https://github.com/istio/istio/releases) 页面下载istio的安装包，安装istio命令行工具，将`istioctl`命令行工具放到你的`$PATH`目录下，对于Mac用户：
 
 ```bash
 wget https://github.com/istio/istio/releases/download/1.0.0/istio-1.0.0-osx.tar.gz
@@ -174,36 +285,43 @@ tar xvf istio-1.0.0-osx.tar.gz
 mv bin/istioctl /usr/local/bin/
 ```
 
-在 Kubernetes 中部署 istio：
+在Kubernetes中部署istio：
 
 ```bash
-kubectl apply -f addon/istio/
+kubectl apply -f addon/istio/istio-demo.yaml
+kubectl apply -f addon/istio/istio-ingress.yaml
 ```
 
 **运行示例**
 
+我们开启了Sidecar自动注入。
+
 ```bash
-kubectl apply -n default -f <(istioctl kube-inject -f yaml/istio-bookinfo/bookinfo.yaml)
-istioctl create -n default -f yaml/istio-bookinfo/bookinfo-gateway.yaml
+kubectl label namespace default istio-injection=enabled
+kubectl apply -n default -f yaml/istio-bookinfo/bookinfo.yaml
+kubectl apply -n default -f yaml/istio-bookinfo/bookinfo-gateway.yaml
+kubectl apply -n default -f yaml/istio-bookinfo/destination-rule-all.yaml
 ```
 
 在您自己的本地主机的`/etc/hosts`文件中增加如下配置项。
 
-```bash
+```
 172.17.8.102 grafana.istio.jimmysong.io
+172.17.8.102 prometheus.istio.jimmysong.io
 172.17.8.102 servicegraph.istio.jimmysong.io
+172.17.8.102 jaeger-query.istio.jimmysong.io
 ```
 
 我们可以通过下面的URL地址访问以上的服务。
 
 | Service      | URL                                                          |
 | ------------ | ------------------------------------------------------------ |
-| grafana      | [http://grafana.istio.jimmysong.io](http://grafana.istio.jimmysong.io/) |
+| grafana      | http://grafana.istio.jimmysong.io                            |
 | servicegraph | <http://servicegraph.istio.jimmysong.io/dotviz>, <http://servicegraph.istio.jimmysong.io/graph>,<http://servicegraph.istio.jimmysong.io/force/forcegraph.html> |
-| tracing      | [http://172.17.8.101:31888](http://172.17.8.101:31888/)      |
-| productpage  | <http://172.17.8.101:31380/productpage>                      |
+| tracing      | http://jaeger-query.istio.jimmysong.io                       |
+| productpage  | http://172.17.8.101:31380/productpage                        |
 
-详细信息请参阅 <https://istio.io/docs/guides/bookinfo.html>
+详细信息请参阅：https://istio.io/zh/docs/examples/bookinfo/
 
 ![Bookinfo Demo](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster/raw/master/images/bookinfo-demo.gif)
 
@@ -327,6 +445,10 @@ hack/get-dashboard-token.sh
 vagrant destroy
 rm -rf .vagrant
 ```
+
+### 注意
+
+仅做开发测试使用，不要在生产环境使用该项目。
 
 ## 参考
 
