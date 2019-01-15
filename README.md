@@ -1,10 +1,11 @@
 # Istio Handbook——Istio服务网格实践指南
 
-[Istio](https://istio.io/zh) 是由 Google、IBM、Lyft 等共同开源的 Service Mesh（服务网格）框架，于2017年初开始进入大众视野。本书是 [Kubernetes Handbook——Kubernetes中文指南/云原生应用架构实践手册](https://github.com/rootsongjc/kubernetes-handbook)的续篇，Kubernetes 解决了云原生应用的部署问题，Istio 解决是应用的服务（流量）治理问题。在 Kubernetes Handbook 中有大量的关于 Istio 和服务网格相关的章节，这些内容已经与 Kubernetes 本身没有太强的关系，随着 2018年7月31日 [Istio 1.0](https://istio.io/zh/blog/2018/announcing-1.0/) 发布，Istio 本身已经日趋稳定，作为 [ServiceMesher 社区](http://www.servicemesher.com) 的联合创始人我也在社区活动中积累的大量的资料，为了回馈社区，我决定组合社区中已有的资料加上个人撰写，将服务网格部分独立出来单独成书。
+[Istio](https://istio.io/zh) 是由 Google、IBM、Lyft 等共同开源的 Service Mesh（服务网格）框架，于2017年初开始进入大众视野。本书是 [Kubernetes Handbook——Kubernetes 中文指南/云原生应用架构实践手册](https://github.com/rootsongjc/kubernetes-handbook)的续篇，Kubernetes 解决了云原生应用的部署问题，Istio 解决是应用的服务（流量）治理问题。在 Kubernetes Handbook 中有大量的关于 Istio 和服务网格相关的章节，这些内容已经与 Kubernetes 本身没有太强的关系，随着 2018年7月31日 [Istio 1.0](https://istio.io/zh/blog/2018/announcing-1.0/) 发布，Istio 本身已经日趋稳定，作为 [ServiceMesher 社区](http://www.servicemesher.com) 的联合创始人我也在社区活动中积累的大量的资料，为了回馈社区，我决定组合社区中已有的资料加上个人撰写，将服务网格部分独立出来单独成书。
 
 本书的主题包括：
 
 - 服务网格概念解析
+- 控制平面和数据平面的原理
 - Istio 架构详解
 - Istio 实战
 
@@ -43,8 +44,6 @@
 
 - 社区网站：http://www.servicemesher.com
 
-- 微信公众号
+- 微信公众号：ServiceMesher
 
-<p align="center">
-  <img src="https://ws1.sinaimg.cn/large/00704eQkgy1fshv989hhqj309k09k0t6.jpg" alt="ServiceMesher微信公众号二维码"/>
-</p>
+![ServiceMesher 微信公众号](https://ws2.sinaimg.cn/large/006tNc79ly1fz6cq93dwmj31jt0beq9s.jpg)

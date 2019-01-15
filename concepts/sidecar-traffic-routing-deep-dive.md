@@ -48,7 +48,7 @@
 
  下图展示的是 `productpage` 服务请求访问 `http://reviews.default.svc.cluster.local:9080/`，当流量进入 `reviews` 服务内部时，`reviews` 服务内部的 Envoy Sidecar 是如何做流量拦截和路由转发的。可以在 [Google Drive](https://drive.google.com/file/d/1n-h235tm8DnL_RqxTTA95rgGtrLkBsyr/view?usp=sharing) 上下载原图。
 
-![Envoy sidecar 流量劫持与路由转发示意图](https://ws2.sinaimg.cn/large/006tNbRwly1fyl39icd27j31c70u04gc.jpg)
+![Envoy sidecar 流量劫持与路由转发示意图](../images/envoy-sidecar-traffic-interception-20190111.png)
 
 第一步开始时，`productpage` Pod 中的 Envoy sidecar 已经通过 EDS 选择出了要请求的 `reviews` 服务的一个 Pod，知晓了其 IP 地址，发送 TCP 连接请求。
 

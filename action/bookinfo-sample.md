@@ -1,6 +1,6 @@
 # Bookinfo 示例
 
-[Bookinfo 示例](https://istio.io/zh/docs/examples/bookinfo/) 是 Istio 官方为了演示 Istio 功能而开发的一个示例应用，该应用有如下特点：
+[Bookinfo 示例](https://istio.io/zh/docs/examples/bookinfo/)是 Istio 官方为了演示 Istio 功能而开发的一个示例应用，该应用有如下特点：
 
 - 使用微服务方式开发，共有四个微服务
 - 多语言应用，使用了 Java、Python、Ruby 和 NodeJs 语言
