@@ -7,6 +7,7 @@
 ## 概念原理
 
 - [什么是服务网格？](concepts/what-is-service-mesh.md)
+- [Service Mesh——后 Kubernetes 时代的微服务](concepts/service-mesh-the-microservices-in-post-kubernetes-era.md)
 - [服务网格架构](concepts/service-mesh-architectures.md)
   - [服务网格的实现模式](concepts/service-mesh-patterns.md)
   - [Istio 架构解析](concepts/istio-architecture.md)

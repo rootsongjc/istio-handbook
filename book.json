@@ -9,7 +9,8 @@
             "ServiceMesher 社区": "http://www.servicemesher.com",
             "Istio 官网（中文）": "https://istio.io/zh/",
             "SOFAMesh - 基于 Istio 的大规模服务网格解决方案": "https://github.com/alipay/sofa-mesh",
-            "SOFAMosn - Golang 版的高性能 Service Mesh Sidecar 代理": "https://github.com/alipay/sofa-mosn"
+            "SOFAMosn - Golang 版的高性能 Service Mesh Sidecar 代理": "https://github.com/alipay/sofa-mosn",
+            "Kubernetes Handbook - Kubernetes中文指南/云原生应用架构实践手册 by Jimmy Song(宋净超)": "https://jimmysong.io/kubernetes-handbook/"
         }
     },
     "plugins": [
