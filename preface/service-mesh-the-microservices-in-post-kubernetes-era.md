@@ -1,4 +1,4 @@
-# Service Mesh——后 Kubernetes 时代的微服务
+# 服务网格——后 Kubernetes 时代的微服务
 
 我想听说过 Service Mesh 并试用过 [Istio](https://istio.io/zh) 的人可能都会有以下几个疑问：
 
