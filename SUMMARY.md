@@ -13,6 +13,7 @@
   - [Istio 架构解析](concepts/istio-architecture.md)
 - [Sidecar 模式](concepts/sidecar-pattern.md)
   - [Istio 中的 Sidecar 注入与流量劫持详解](concepts/sidecar-injection-deep-dive.md)
+  - [Sidecar 的自动注入过程详解](concepts/istio-sidecar-injector.md)
 - [流量管理](concepts/traffic-management.md)
   - [流量管理基础概念](concepts/traffic-management-basic.md)
   - [Istio 中的 Sidecar 的流量路由详解](concepts/sidecar-traffic-routing-deep-dive.md)

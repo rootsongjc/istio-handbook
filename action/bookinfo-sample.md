@@ -12,8 +12,6 @@
 
 ![Istio 的 Bookinfo 示例应用架构图](https://ws1.sinaimg.cn/large/006tNbRwgy1fvlwjd3302j31bo0ro0x5.jpg)
 
-
-
 Bookinfo 应用分为四个单独的微服务，其中每个微服务的部署的结构中都注入了一个 Sidecar：
 
 - `productpage` ：`productpage` 微服务会调用 `details` 和 `reviews` 两个微服务，用来生成页面。
