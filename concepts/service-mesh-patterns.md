@@ -53,3 +53,4 @@ Ingress或者边缘代理可以处理进出集群的流量，为了应对集群�
 ## 参考
 
 - [企业级服务网格架构之路解读](https://jimmysong.io/posts/the-enterprise-path-to-service-mesh-architectures/)
+

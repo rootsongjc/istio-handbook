@@ -1,6 +1,6 @@
 # Istio Handbook——Istio 服务网格进阶实战
 
-**注意：本书已转移到 [servicemesher/istio-handbook](https://gtihub.com/servicemesher/istio-handbook)，将由 [ServiceMesher 社区](http://www.servicemesher.com)共同撰写，本仓库已不再维护。**
+**注意：本书已转移到 [servicemesher/istio-handbook](https://github.com/servicemesher/istio-handbook)，将由 [ServiceMesher 社区](http://www.servicemesher.com)共同撰写，本仓库已不再维护。**
 
 ---
 
