@@ -10,7 +10,7 @@
 
 点击下面的图片观看视频。
 
-[![观看视频](https://ws4.sinaimg.cn/large/006tNbRwly1fyq0a5nx1pj30zk0k0whm.jpg)](https://www.bilibili.com/video/av39514214/)
+[![观看视频](../images/006tNbRwly1fyq0a5nx1pj30zk0k0whm.jpg)](https://www.bilibili.com/video/av39514214/)
 
 ## 准备环境
 

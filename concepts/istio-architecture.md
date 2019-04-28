@@ -2,7 +2,7 @@
 
 下面是以漫画的形式说明 Istio 是什么。
 
-![来自 Twitter @daniseyu21](https://ws3.sinaimg.cn/large/006tNbRwly1fujrgeesk7j316c0tz10y.jpg)
+![来自 Twitter @daniseyu21](../images/006tNbRwly1fujrgeesk7j316c0tz10y.jpg)
 
 该图中描绘了以下内容：
 

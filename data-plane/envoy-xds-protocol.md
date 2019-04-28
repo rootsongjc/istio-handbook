@@ -121,15 +121,15 @@ LDS/CDS 资源提示信息将始终为空，并且期望管理服务器的每个
 
 如上所述，Envoy 可能会更新  `DiscoveryRequest` 中出现的 `resource_names` 列表，其中 `DiscoveryRequest`  是用来 ACK/NACK 管理服务器的特定的 `DiscoveryResponse` 。此外，Envoy 后续可能会发送额外的 `DiscoveryRequests` ，用于在特定 `version_info` 上使用新的资源提示来更新管理服务器。例如，如果 Envoy 在 EDS 版本 __X__ 时仅知道集群 `foo`，但在随后收到的 CDS 更新时额外获取了集群 `bar` ，它可能会为版本 __X__ 发出额外的 `DiscoveryRequest` 请求，并将 `{foo，bar}` 作为请求的 `resource_names` 。
 
-![CDS 响应导致 EDS 资源更新](https://ws1.sinaimg.cn/large/006tNc79ly1fvph0p7u8zj31fm0lq0ve.jpg)
+![CDS 响应导致 EDS 资源更新](../images/006tNc79ly1fvph0p7u8zj31fm0lq0ve.jpg)
 
 这里可能会出现竞争状况；如果 Envoy 在版本 __X__ 上发布了资源提示更新请求，但在管理服务器处理该请求之前发送了新的版本号为 __Y__  的响应，针对 `version_info` 为 __X__ 的版本，资源提示更新可能会被解释为拒绝  __Y__ 。为避免这种情况，通过使用管理服务器提供的 `nonce`，Envoy 可用来保证每个 `DiscoveryRequest` 对应到相应的 `DiscoveryResponse` ：
 
-![EDS 更新速率激发 nonces](https://ws4.sinaimg.cn/large/006tNc79ly1fvph04ln3fj31kw0rogqc.jpg)
+![EDS 更新速率激发 nonces](../images/006tNc79ly1fvph04ln3fj31kw0rogqc.jpg)
 
 管理服务器不应该为含有过期 `nonce` 的 `DiscoveryRequest` 发送 `DiscoveryResponse` 响应。在向 Envoy 发送的 `DiscoveryResponse`  中包含了的新 `nonce` ，则此前的 `nonce` 将过期。在资源新版本就绪之前，管理服务器不需要向 Envoy 发送更新。同版本的早期请求将会过期。在新版本就绪时，管理服务器可能会处理同一个版本号的多个 `DiscoveryRequests`请求。
 
-![请求变的陈旧](https://ws3.sinaimg.cn/large/006tNc79ly1fvpgy6xewrj31b415ctcy.jpg)
+![请求变的陈旧](../images/006tNc79ly1fvpgy6xewrj31b415ctcy.jpg)
 
 上述资源更新序列表明 Envoy 并不能期待其发出的每个 `DiscoveryRequest` 都得到 `DiscoveryResponse` 响应。
 
@@ -153,7 +153,7 @@ LDS/CDS 资源提示信息将始终为空，并且期望管理服务器的每个
 
 当管理服务器进行资源分发时，通过上述保证交互顺序的方式来避免流量丢弃是一项很有挑战的工作。ADS 允许单一管理服务器通过单个 gRPC 流，提供所有的 API 更新。配合仔细规划的更新顺序，ADS 可规避更新过程中流量丢失。使用 ADS，在单个流上可通过类型 URL 来进行复用多个独立的 `DiscoveryRequest`/`DiscoveryResponse` 序列。对于任何给定类型的 URL，以上 `DiscoveryRequest` 和 `DiscoveryResponse` 消息序列都适用。 更新序列可能如下所示：
 
-![EDS/CDS 在一个 ADS 流上多路复用](https://ws2.sinaimg.cn/large/006tNc79ly1fvpgxnl947j313q0wgq62.jpg)
+![EDS/CDS 在一个 ADS 流上多路复用](../images/006tNc79ly1fvpgxnl947j313q0wgq62.jpg)
 
 每个 Envoy 实例可使用单独的 ADS 流。
 
@@ -205,11 +205,11 @@ xDS 增量会话始终位于 gRPC 双向流的上下文中。这允许 xDS 服�
 
 在第一个示例中，客户端连接并接收它的第一个更新并 ACK。第二次更新失败，客户端发送 NACK 拒绝更新。xDS客户端后续会自发地请求 “wc” 相关资源。
 
-![增量 session 示例](https://ws4.sinaimg.cn/large/006tNc79ly1fvpgwfbep7j31kw0vldli.jpg)
+![增量 session 示例](../images/006tNc79ly1fvpgwfbep7j31kw0vldli.jpg)
 
 在重新连接时，支持增量的 xDS 客户端可能会告诉服务器其已知资源从而避免通过网络重新发送它们。
 
-![增量重连示例](https://ws2.sinaimg.cn/large/006tNc79ly1fvpgx05z3kj31kw0phwif.jpg)
+![增量重连示例](../images/006tNc79ly1fvpgx05z3kj31kw0phwif.jpg)
 
 ## REST-JSON 轮询订阅
 

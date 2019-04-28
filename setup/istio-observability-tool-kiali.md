@@ -20,8 +20,8 @@ Kiali 提供以下功能：
 下图展示了 kiali 中显示的 Bookinfo 示例的服务拓扑图。
 
 <div class="gallery">
-    <a href="https://ws2.sinaimg.cn/large/006tNbRwly1fw33xjfxtij31kw0veai7.jpg" title="Kiali 页面">
-    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fw33xjfxtij31kw0veai7.jpg"></a>
+    <a href="../images/006tNbRwly1fw33xjfxtij31kw0veai7.jpg" title="Kiali 页面">
+    <img src="../images/006tNbRwly1fw33xjfxtij31kw0veai7.jpg"></a>
 </div>
 
 你可以使用 [kubernetes-vagrant-centos-cluster](https://github.com/rootsongjc/kubernetes-vagrant-centos-cluster) 来快速启动一个运行 Kiali 的 Kubernetes 集群。
@@ -57,8 +57,8 @@ external_services:
 Application、Workload 与 Service 的关系如下图所示。
 
 <div class="gallery">
-    <a href="https://ws4.sinaimg.cn/large/006tNbRwly1fw5mxl7c2wj31260psq5y.jpg">
-    <img src="https://ws4.sinaimg.cn/large/006tNbRwly1fw5mxl7c2wj31260psq5y.jpg">
+    <a href="../images/006tNbRwly1fw5mxl7c2wj31260psq5y.jpg">
+    <img src="../images/006tNbRwly1fw5mxl7c2wj31260psq5y.jpg">
     </a>
 </div>
 
@@ -71,8 +71,8 @@ make swagger-serve
 Swagger UI 如下图。
 
 <div class="gallery">
-    <a href="https://ws1.sinaimg.cn/large/006tNbRwly1fw5kr3srpkj31kw14awo6.jpg" title="Kiali API 文档">
-    <img src="https://ws1.sinaimg.cn/large/006tNbRwly1fw5kr3srpkj31kw14awo6.jpg"></a>
+    <a href="../images/006tNbRwly1fw5kr3srpkj31kw14awo6.jpg" title="Kiali API 文档">
+    <img src="../images/006tNbRwly1fw5kr3srpkj31kw14awo6.jpg"></a>
 </div>
 
 ## 架构
@@ -80,8 +80,8 @@ Swagger UI 如下图。
 Kiali 部署完成后只启动了一个 Pod，前后端都集成在这一个 Pod 中。Kiali 也有一些依赖的组件，例如如果要在 Kiali 的页面中获取到监控 metric 需要使用在 `istio-system` 中部署 Prometheus。分布式卓总直接下图是 Kiali 的架构，来自 Kiali 官网。
 
 <div class="gallery">
-    <a href="https://ws1.sinaimg.cn/large/006tNbRwly1fw5je6mg6aj30jg0ayaar.jpg" title="kiali架构图">
-    <img src="https://ws1.sinaimg.cn/large/006tNbRwly1fw5je6mg6aj30jg0ayaar.jpg">
+    <a href="../images/006tNbRwly1fw5je6mg6aj30jg0ayaar.jpg" title="kiali架构图">
+    <img src="../images/006tNbRwly1fw5je6mg6aj30jg0ayaar.jpg">
     </a>
 </div>
 
@@ -101,8 +101,8 @@ Jaeger 和 Grafana 都是可选组件，使用的都是外部服务，不是由 
 Kiali 中的服务拓扑图比起 Istio 原来默认部署的 ServiceGraph 的效果更炫也更加直观，具有更多选项。
 
 <div class="gallery">
-    <a href="https://ws2.sinaimg.cn/large/006tNbRwly1fw5l2ntj0hj31kw0ze48t.jpg" title="Kiali 中的服务拓扑图">
-    <img src="https://ws2.sinaimg.cn/large/006tNbRwly1fw5l2ntj0hj31kw0ze48t.jpg">
+    <a href="../images/006tNbRwly1fw5l2ntj0hj31kw0ze48t.jpg" title="Kiali 中的服务拓扑图">
+    <img src="../images/006tNbRwly1fw5l2ntj0hj31kw0ze48t.jpg">
     </a>
 </div>
 
@@ -242,8 +242,8 @@ round(sum(rate(istio_requests_total{reporter="source",source_workload_namespace=
 关于 PQL 的详细使用方式请参考 [QUERY EXAMPLES - prometheus.io](https://prometheus.io/docs/prometheus/latest/querying/examples/)。
 
 <div class="gallery">
-<a href="https://ws1.sinaimg.cn/large/006tNbRwly1fw966a6ki3j31hc0tdagx.jpg" title="Prometheus">
-<img src="https://ws1.sinaimg.cn/large/006tNbRwly1fw966a6ki3j31hc0tdagx.jpg" alt="Prometheus">
+<a href="../images/006tNbRwly1fw966a6ki3j31hc0tdagx.jpg" title="Prometheus">
+<img src="../images/006tNbRwly1fw966a6ki3j31hc0tdagx.jpg" alt="Prometheus">
 </a>
 </div>
 

@@ -10,7 +10,7 @@
 
 以下为 Istio 官方提供的该应用的架构图。
 
-![Istio 的 Bookinfo 示例应用架构图](https://ws1.sinaimg.cn/large/006tNbRwgy1fvlwjd3302j31bo0ro0x5.jpg)
+![Istio 的 Bookinfo 示例应用架构图](../images/006tNbRwgy1fvlwjd3302j31bo0ro0x5.jpg)
 
 Bookinfo 应用分为四个单独的微服务，其中每个微服务的部署的结构中都注入了一个 Sidecar：
 

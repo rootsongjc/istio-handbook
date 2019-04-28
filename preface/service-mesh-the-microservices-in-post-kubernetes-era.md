@@ -51,7 +51,7 @@ Envoy 对于 Service Mesh 或者说  Cloud Native 最大的贡献就是定义了
 
 下图展示的是 Kubernetes 与 Service Mesh 中的的服务访问关系，本文仅针对 sidecar per-pod 模式，详情请参考[服务网格的实现模式](https://jimmysong.io/istio-handbook/concepts/service-mesh-patterns.html)。
 
-![kubernetes vs service mesh](https://ws2.sinaimg.cn/large/006tNc79ly1fz6c7pj4sqj31hk0rejuz.jpg)
+![kubernetes vs service mesh](../images/006tNc79ly1fz6c7pj4sqj31hk0rejuz.jpg)
 
 Kubernetes 集群的每个节点都部署了一个 `kube-proxy` 组件，该组件会与 Kubernetes API Server 通信，获取集群中的 [service](https://jimmysong.io/kubernetes-handbook/concepts/service.html) 信息，然后设置 iptables 规则，直接将对某个 service 的请求发送到对应的 Endpoint（属于同一组 service 的 pod）上。
 
@@ -89,13 +89,13 @@ Istio `Gateway` 描述的负载均衡器用于承载进出网格边缘的连接�
 
 下面这张图大家在了解 Service Mesh 的时候可能都看到过，每个方块代表一个服务的示例，例如 Kubernetes 中的一个 Pod（其中包含了 sidecar proxy），xDS 协议控制了 Istio Service Mesh 中所有流量的具体行为，即将下图中的方块链接到了一起。
 
-![Service Mesh 示意图](https://ws1.sinaimg.cn/large/006tNc79ly1fz73xstibij30b409cmyh.jpg)
+![Service Mesh 示意图](../images/006tNc79ly1fz73xstibij30b409cmyh.jpg)
 
 xDS 协议是由 [Envoy](https://envoyproxy.io) 提出的，在 Envoy v2 版本 API 中最原始的 xDS 协议只指 CDS、EDS、LDS 和 RDS。
 
 下面我们以两个 service，每个 service 都有两个实例的例子来看下 Envoy 的 xDS 协议。
 
-![Envoy xDS 协议](https://ws4.sinaimg.cn/large/006tNc79ly1fz7auvvrjnj30s80j8gn6.jpg)
+![Envoy xDS 协议](../images/006tNc79ly1fz7auvvrjnj30s80j8gn6.jpg)
 
 上图中的箭头不是流量在进入 Enovy Proxy 后的路径或路由，而是想象的一种 Envoy 中 xDS 接口处理的顺序并非实际顺序，其实 xDS 之间也是有交叉引用的。
 
@@ -132,7 +132,7 @@ Envoy 通过查询文件或管理服务器来动态发现资源。概括地讲�
 
 Envoy 是 Istio Service Mesh 中默认的 Sidecar，Istio 在 Enovy 的基础上按照 Envoy 的 xDS 协议扩展了其控制平面，在讲到 Envoy xDS 协议之前还需要我们先熟悉下 Envoy 的基本术语。下面列举了 Envoy 里的基本术语及其数据结构解析，关于 Envoy 的详细介绍请参考 [Envoy 官方文档](http://www.servicemesher.com/envoy/)，至于 Envoy 在 Service Mesh（不仅限于 Istio） 中是如何作为转发代理工作的请参考网易云刘超的这篇[深入解读 Service Mesh 背后的技术细节 ](https://www.cnblogs.com/163yun/p/8962278.html)以及[理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持](https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)，本文引用其中的一些观点，详细内容不再赘述。
 
-![Envoy proxy 架构图](https://ws2.sinaimg.cn/large/006tNc79ly1fz69bsaqk7j314k0tsq90.jpg)
+![Envoy proxy 架构图](../images/006tNc79ly1fz69bsaqk7j314k0tsq90.jpg)
 
 ### 基本术语
 
@@ -149,7 +149,7 @@ xDS 协议是由 Envoy 提出的，现在是 Istio 中默认的 sidecar proxy，
 
 ## Istio Service Mesh
 
-![Istio service mesh 架构图](https://ws2.sinaimg.cn/large/006tNc79ly1fz73sprcdlj31580u046j.jpg)
+![Istio service mesh 架构图](../images/006tNc79ly1fz73sprcdlj31580u046j.jpg)
 
 Istio 是一个功能十分丰富的 Service Mesh，它包括如下功能：
 
