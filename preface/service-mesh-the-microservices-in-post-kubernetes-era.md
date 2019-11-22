@@ -183,7 +183,7 @@ Istio 中定义了如下的 [CRD](https://jimmysong.io/kubernetes-handbook/conce
 
 ## 总结
 
-如果说 Kubernetes 管理的对象是 Pod，那么 Service Mesh 中管理的对象就是一个个 Service，所以说使用 Kubernetes 管理微服务后再应用 Service Mesh 就是水到渠成了，如果连 Service 你也不像管了，那就用如 [knative](https://github.com/knative/) 这样的 serverless 平台，这就是后话了。
+如果说 Kubernetes 管理的对象是 Pod，那么 Service Mesh 中管理的对象就是一个个 Service，所以说使用 Kubernetes 管理微服务后再应用 Service Mesh 就是水到渠成了，如果连 Service 你也不想管了，那就用如 [knative](https://github.com/knative/) 这样的 serverless 平台，这就是后话了。
 
 Envoy 的功能也不只是做流量转发，以上概念只不过是 Istio 在 Kubernetes 之上新增一层抽象层中的冰山一角，但因为流量管理是服务网格最基础也是最重要的功能，所以这将成为本书的开始。
 
