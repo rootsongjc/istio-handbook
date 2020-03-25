@@ -45,10 +45,6 @@
 
 ## ServiceMesher 社区
 
-更多关于服务网格的资讯、技术干货请关注我们的社区。
-
-- 社区网站：https://www.servicemesher.com
-
-- 微信公众号：ServiceMesher
+更多关于服务网格的资讯、技术干货请关注我们的社区。社区网站：https://www.servicemesher.com
 
 ![ServiceMesher 微信公众号](images/006tNc79ly1fz6cq93dwmj31jt0beq9s.jpg)
