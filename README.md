@@ -25,7 +25,7 @@
 
 ## 致谢
 
-[ServiceMesher 社区](https://www.servicemesher.com)负责翻译了 [Envoy 官方文档](https://www.servicemesher.com/envoy/)，并负责了 Istio 官方中文文档的维护，同时还编译了大量资料，本书所有文章的文末**参考**栏目里标注了参考文章的链接，感谢大家对本书的大力支持。
+[ServiceMesher ](https://www.servicemesher.com)负责翻译了 [Envoy 官方文档](https://www.servicemesher.com/envoy/)，并负责了 Istio 官方中文文档的维护，同时还编译了大量资料，本书所有文章的文末**参考**栏目里标注了参考文章的链接，感谢大家对本书的大力支持。
 
 ## 版权
 
@@ -43,7 +43,7 @@
 
 请参考 [Istio 网站样式指南](https://istio.io/about/contribute/style-guide/)。
 
-## ServiceMesher 社区
+## ServiceMesher
 
 更多关于服务网格的资讯、技术干货请关注我们的社区。社区网站：https://www.servicemesher.com
 

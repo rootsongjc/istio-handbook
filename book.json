@@ -6,9 +6,8 @@
     "links": {
         "sidebar": {
             "回到主页": "https://jimmysong.io",
-            "ServiceMesher 社区": "https://www.servicemesher.com",
-            "Istio 官网（中文）": "https://istio.io/zh/",
-            "MOSN- 蚂蚁金服开源的云原生网络代理": "https://github.com/mosn/mosn",
+            "云原生社区 Istio SIG": "https://i.cloudnative.to/istio/",
+            "Istio 官网（中文）": "https://istio.io/latest/zh/",
             "Kubernetes Handbook - Kubernetes中文指南/云原生应用架构实践手册 by Jimmy Song(宋净超)": "https://jimmysong.io/kubernetes-handbook/"
         }
     },
@@ -29,7 +28,6 @@
         "-highlight", "prism", "prism-themes",
         "sitemap-general",
         "lightbox",
-        "adsense",
         "ga"
     ],
     "pluginsConfig": {
@@ -52,7 +50,7 @@
             "size": "small"
         },
         "tbfed-pagefooter": {
-            "copyright": "<p><a href=https://time.geekbang.org/column/intro/292?code=EhFrzVKvIro8U06UyaeLCCdmbpk7g010iXprzDxW17I%3D&utm_term=SPoster>给开发者和架构师的云计算指南 - 极客时间专栏《深入浅出云计算》</a> | <a href=https://jimmysong.io/contact/>加入云原生社区</a></p>Copyright © 2017-2020 | Distributed under <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY 4.0</a> | <a href=https://jimmysong.io>jimmysong.io</a>",
+            "copyright": "Copyright © 2021 | Distributed under <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY 4.0</a> | <a href=https://jimmysong.io>jimmysong.io</a>",
             "modify_label": " Updated at ",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
         },
@@ -70,13 +68,6 @@
         },
         "sitemap-general": {
             "prefix": "https://jimmysong.io/istio-handbook/"
-        },
-        "adsense": {
-            "client": "ca-pub-4029167986768912",
-            "slot": "2445941692",
-            "format": "auto",
-            "element": ".page-inner section",
-            "position": "bottom"
         },
         "ga": {
             "token": "UA-93485976-1"
