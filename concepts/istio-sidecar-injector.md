@@ -4,7 +4,7 @@
 
 ## Sidecar 注入过程
 
-如 Istio 官方文档中对 [Istio sidecar 注入](https://istio.io/zh/docs/setup/kubernetes/sidecar-injection/)的描述，你可以使用 istioctl 命令手动注入 Sidecar，也可以为 Kubernetes 集群自动开启 sidecar 注入，这主要用到了 [Kubernetes 的准入控制器](https://jimmysong.io/kubernetes-handbook/concepts/admission-controller.html)中的 webhook，参考 Istio 官网中对 [Istio sidecar 注入](https://istio.io/zh/docs/setup/kubernetes/sidecar-injection/)的描述。
+如 Istio 官方文档中对 [Istio sidecar 注入](https://istio.io/latest/zh/docs/setup/additional-setup/sidecar-injection/)的描述，你可以使用 istioctl 命令手动注入 Sidecar，也可以为 Kubernetes 集群自动开启 sidecar 注入，这主要用到了 [Kubernetes 的准入控制器](https://jimmysong.io/kubernetes-handbook/concepts/admission-controller.html)中的 webhook，参考 Istio 官网中对 [Istio sidecar 注入](https://istio.io/latest/zh/docs/setup/additional-setup/sidecar-injection/)的描述。
 
 ![Sidecar 注入流程图](../images/006tKfTcly1g0bvoxmfvuj311i0fy0vh.jpg)
 
@@ -22,4 +22,4 @@ Istio 和 sidecar 配置保存在 `istio` 和 `istio-sidecar-injector` 这两个
 
 ## 参考
 
-- [注入 Istio sidecar - istio.io](https://istio.io/zh/docs/setup/kubernetes/sidecar-injection/)
+- [注入 Istio sidecar - istio.io](https://istio.io/latest/zh/docs/setup/additional-setup/sidecar-injection/)
