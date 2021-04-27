@@ -44,6 +44,11 @@
 - [Istio 安装](setup/istio-installation.md)
 - [可观察性工具 kiali](setup/istio-observability-tool-kiali.md)
 
+## 配置
+
+- [流量管理](config/networking.md)
+  - [EnvoyFilter](config/networking/envoy-filter.md)
+
 ## 开发指南
 
 - [Istio 开发环境配置](develop/istio-dev-env.md)
