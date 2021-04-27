@@ -46,7 +46,7 @@
 
 ## 配置
 
-- [流量管理](config/networking.md)
+- [流量管理](config/networking/index.md)
   - [EnvoyFilter](config/networking/envoy-filter.md)
 
 ## 开发指南
