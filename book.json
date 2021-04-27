@@ -21,7 +21,6 @@
         "back-to-top-button",
         "-lunr", "-search", "search-plus",
         "github-buttons@2.1.0",
-        "favicon@^0.0.2",
         "tbfed-pagefooter@^0.0.1",
         "3-ba",
         "theme-default",
@@ -53,10 +52,6 @@
             "copyright": "Copyright © 2021 | Distributed under <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>CC BY 4.0</a> | <a href=https://jimmysong.io>jimmysong.io</a>",
             "modify_label": " Updated at ",
             "modify_format": "YYYY-MM-DD HH:mm:ss"
-        },
-        "favicon": {
-            "shortcut": "favicon.ico",
-            "bookmark": "favicon.ico"
         },
         "3-ba": {
             "token": "11f7d254cfa4e0ca44b175c66d379ecc"
