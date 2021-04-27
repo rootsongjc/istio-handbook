@@ -3,7 +3,7 @@
 ## 前言
 
 - [序言](README.md)
-- [服务网格——后 Kubernetes 时代的微服务](preface/service-mesh-the-microservices-in-post-kubernetes-era.md)
+- [服务网格——后 Kubernetes 时代的应用网络](preface/service-mesh-the-microservices-in-post-kubernetes-era.md)
 
 ## 概念原理
 

@@ -1,4 +1,4 @@
-# 服务网格——后 Kubernetes 时代的微服务
+# 服务网格——后 Kubernetes 时代的应用网络
 
 我想听说过 Service Mesh 并试用过 [Istio](https://istio.io/zh) 的人可能都会有以下几个疑问：
 
@@ -192,10 +192,6 @@ Envoy 的功能也不只是做流量转发，以上概念只不过是 Istio 在 
 - [Istio 流量管理的基本概念详解 - jimmysong.io](https://jimmysong.io/posts/istio-traffic-management-basic-concepts/)
 - [Kubernetes  kube-proxy 中的 iptables 代理模式 - jimmysong.io](https://jimmysong.io/kubernetes-handbook/concepts/service.html#iptables-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F)
 - [Kubernetes kube-proxy 中的 ipvs 代理模式 - jimmysong.io](https://jimmysong.io/kubernetes-handbook/concepts/service.html#ipvs-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F)
-- [Envoy v2 API 概览 - servicemesher.com](http://www.servicemesher.com/envoy/configuration/overview/v2_overview.html)
-- [监听器发现服务（LDS）- servicemesher.com](http://www.servicemesher.com/envoy/configuration/listeners/lds.html)
-- [路由发现服务（RDS）- servicemesher.com](http://www.servicemesher.com/envoy/configuration/http_conn_man/rds.html)
-- [集群发现服务（CDS）- servicemesher.com](http://www.servicemesher.com/envoy/configuration/cluster_manager/cds.html)
 - [Kubernetes service - jimmysong.io](https://jimmysong.io/kubernetes-handbook/concepts/service.html)
 - [xDS 协议解析 - jimmysong.io](https://jimmysong.io/istio-handbook/concepts/envoy-xds-protocol.html)
 - [深入解读 Service Mesh 背后的技术细节 - cnblogs.com](https://www.cnblogs.com/163yun/p/8962278.html)
