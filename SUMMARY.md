@@ -48,6 +48,7 @@
 
 - [流量管理](config/networking/index.md)
   - [EnvoyFilter](config/networking/envoy-filter.md)
+  - [Sidecar](config/networking/sidecar.md)
 
 ## 开发指南
 
