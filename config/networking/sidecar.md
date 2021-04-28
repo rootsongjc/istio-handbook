@@ -16,6 +16,8 @@
 
 `MeshConfig` 根命名空间中的 `Sidecar` 配置将被默认应用于所有没有 Sidecar 配置的命名空间。这个全局默认 Sidecar 配置不应该有任何 workloadSelector。
 
+## 示例
+
 下面的例子在根命名空间 `istio-config` 中声明了一个全局默认 `Sidecar` 配置，该配置将所有命名空间中的 sidecar 配置为只允许向同一命名空间中的其他工作负载以及 `istio-system` 命名空间中的服务输出流量。
 
 ```yaml
@@ -153,6 +155,8 @@ spec:
     hosts:
     - "*/*"
 ```
+
+关于 Sidecar 配置的详细用法请参考 [Istio 官方文档](https://istio.io/latest/docs/reference/config/networking/sidecar/)。
 
 ## 参考
 

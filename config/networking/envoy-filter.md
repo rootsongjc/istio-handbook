@@ -1,6 +1,6 @@
 # EnvoyFilter
 
-EnvoyFilter 提供了一种机制来定制 Istio Pilot 生成的 Envoy 配置。使用 EnvoyFilter 来修改某些字段的值，添加特定的过滤器，甚至添加全新的 listener、cluster 等。这个功能必须谨慎使用，因为不正确的配置可能破坏整个网格的稳定性。与其他 Istio 网络对象不同，EnvoyFilter 是累加应用。对于特定命名空间中的特定工作负载，可以存在任意数量的 EnvoyFilter。这些 EnvoyFilter 的应用顺序如下：配置[根命名空间](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig)中的所有 EnvoyFilter，其次是工作负载命名空间中的所有匹配 EnvoyFilter。
+`EnvoyFilter` 提供了一种机制来定制 Istio Pilot 生成的 Envoy 配置。使用 EnvoyFilter 来修改某些字段的值，添加特定的过滤器，甚至添加全新的 listener、cluster 等。这个功能必须谨慎使用，因为不正确的配置可能破坏整个网格的稳定性。与其他 Istio 网络对象不同，EnvoyFilter 是累加应用。对于特定命名空间中的特定工作负载，可以存在任意数量的 EnvoyFilter。这些 EnvoyFilter 的应用顺序如下：配置[根命名空间](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig)中的所有 EnvoyFilter，其次是工作负载命名空间中的所有匹配 EnvoyFilter。
 
 ### 注意一
 

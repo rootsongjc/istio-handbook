@@ -345,8 +345,6 @@ Init 容器中使用的的 iptables 版本是 `v1.6.0`，共包含 5 张表：
 
 ![iptables 调用链](../images/0069RVTdgy1fv5dq2bptdj31110begnl.jpg)
 
-关于 iptables 的详细介绍请参考[常见 iptables 使用规则场景整理](https://www.aliang.org/Linux/iptables.html)。
-
 ### iptables 命令
 
 `iptables` 命令的主要用途是修改这些表中的规则。`iptables` 命令格式如下：
@@ -407,7 +405,7 @@ Chain OUTPUT (policy ACCEPT 18M packets, 1916M bytes)
 
 Init 容器通过向 iptables nat 表中注入转发规则来劫持流量的，下图显示的是 productpage 服务中的 iptables 流量劫持的详细过程。
 
-![Envoy sidecar 流量劫持流程示意图](../images/envoy-sidecar-traffic-interception-20190111.png)
+![Envoy sidecar 流量劫持流程示意图](../images/envoy-sidecar-traffic-interception-zh-20210407.jpg)
 
 Init 容器启动时命令行参数中指定了 `REDIRECT` 模式，因此只创建了 NAT 表规则，接下来我们查看下 NAT 表中创建的规则，这是全文中的**重点部分**，前面讲了那么多都是为它做铺垫的。下面是查看 nat 表中的规则，其中链的名字中包含 `ISTIO` 前缀的是由 Init 容器注入的，规则匹配是根据下面显示的顺序来执行的，其中会有多次跳转。
 
@@ -517,7 +515,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 /usr/local/bin/pilot-agent proxy sidecar --configPath /etc/istio/proxy --binaryPath /usr/local/bin/envoy --serviceCluster productpage --drainDuration 45s --parentShutdownDuration 1m0s --discoveryAddress istio-pilot.istio-system:15007 --discoveryRefreshDelay 1s --zipkinAddress zipkin.istio-system:9411 --connectTimeout 10s --statsdUdpAddress istio-statsd-prom-bridge.istio-system:9125 --proxyAdminPort 15000 --controlPlaneAuthPolicy NONE
 ```
 
-主要配置了 Envoy 二进制文件的位置、服务发现地址、服务集群名、监控指标上报地址、Envoy 的管理端口、热重启时间等，详细用法请参考 [Istio官方文档 pilot-agent 的用法](https://istio.io/docs/reference/commands/pilot-agent/)。
+主要配置了 Envoy 二进制文件的位置、服务发现地址、服务集群名、监控指标上报地址、Envoy 的管理端口、热重启时间等，详细用法请参考 [Istio官方文档 pilot-agent 的用法](https://istio.io/latest/docs/reference/commands/pilot-agent/)。
 
 `pilot-agent` 是容器中 PID 为 1 的启动进程，它启动时又创建了一个 Envoy 进程，如下：
 
@@ -537,7 +535,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 - `-l warn`：日志级别
 - `--v2-config-only`：只解析 v2 引导配置文件
 
-详细配置请参考 [Envoy 的命令行选项](http://www.servicemesher.com/envoy/operations/cli.html)。
+详细配置请参考 [Envoy 的命令行选项](https://cloudnative.to/envoy/operations/cli.html)。
 
 查看 Envoy 的配置文件 `/etc/istio/proxy/envoy-rev0.json`。
 
@@ -672,7 +670,7 @@ ENTRYPOINT ["/usr/local/bin/pilot-agent"]
 
 ![Istio bookinfo](../images/0069RVTdgy1fv5df9lq1aj317o0o6wia.jpg)
 
-图片来自 [Istio 官方网站](https://istio.io/zh/docs/examples/bookinfo/)
+图片来自 [Istio 官方网站](https://istio.io/latest/zh/docs/examples/bookinfo/)
 
 对照 bookinfo 示例的 productpage 的查看建立的连接。在 `productpage-v1-745ffc55b7-2l2lw` Pod 的 `istio-proxy` 容器中使用 root 用户查看打开的端口。
 
@@ -698,11 +696,10 @@ envoy    11 istio-proxy   63u  IPv4 338525      0t0  TCP productpage-v1-745ffc55
 
 ## 参考
 
-- [SOFAMesh & SOFA MOSN—基于Istio构建的用于应对大规模流量的Service Mesh解决方案 - jimmysong.io](https://jimmysong.io/posts/sofamesh-and-mosn-proxy-sidecar-service-mesh-by-ant-financial)
+- [SOFAMesh & SOFA MOSN—基于Istio构建的用于应对大规模流量的Service Mesh解决方案 - jimmysong.io](https://jimmysong.io/blog/sofamesh-and-mosn-proxy-sidecar-service-mesh-by-ant-financial/)
 - [Init 容器 - Kubernetes 中文指南/云原生应用架构实践手册 - jimmysong.io](https://jimmysong.io/kubernetes-handbook/concepts/init-containers.html)
 - [JSONPath Support - kubernetes.io](https://kubernetes.io/docs/reference/kubectl/jsonpath/)
 - [iptables 命令使用说明 - wangchujiang.com](https://wangchujiang.com/linux-command/c/iptables.html)
 - [How To List and Delete Iptables Firewall Rules - digitalocean.com](https://www.digitalocean.com/community/tutorials/how-to-list-and-delete-iptables-firewall-rules)
 - [一句一句解说 iptables的详细中文手册 - cnblog.com](https://www.cnblogs.com/fhefh/archive/2011/04/04/2005249.html)
-- [常见iptables使用规则场景整理 - aliang.org](https://www.aliang.org/Linux/iptables.html)
-- [理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持 - jimmysong.io](https://jimmysong.io/posts/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)
+- [理解 Istio Service Mesh 中 Envoy 代理 Sidecar 注入及流量劫持 - jimmysong.io](https://jimmysong.io/blog/envoy-sidecar-injection-in-istio-service-mesh-deep-dive/)
