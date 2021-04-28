@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 <url> <loc>https://jimmysong.io/istio-handbook/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
-<url> <loc>https://jimmysong.io/istio-handbook/preface/service-mesh-the-microservices-in-post-kubernetes-era.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/concepts/what-is-service-mesh.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://jimmysong.io/istio-handbook/concepts/the-application-networking-in-post-kubernetes-era.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/concepts/service-mesh-architectures.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/concepts/service-mesh-patterns.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/concepts/istio-architecture.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
@@ -31,8 +31,14 @@
 <url> <loc>https://jimmysong.io/istio-handbook/setup/istio-installation.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/setup/istio-observability-tool-kiali.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/config/networking/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://jimmysong.io/istio-handbook/config/networking/virtual-service.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://jimmysong.io/istio-handbook/config/networking/destination-rule.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://jimmysong.io/istio-handbook/config/networking/gateway.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/config/networking/envoy-filter.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/config/networking/sidecar.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://jimmysong.io/istio-handbook/config/networking/service-entry.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://jimmysong.io/istio-handbook/config/networking/workload-entry.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://jimmysong.io/istio-handbook/config/networking/workload-group.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/develop/istio-dev-env.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/action/bookinfo-sample.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 </urlset>
