@@ -55,6 +55,11 @@
   - [ServiceEntry](config/networking/service-entry.md)
   - [WorkloadEntry](config/networking/workload-entry.md)
   - [WorkloadGroup](config/networking/workload-group.md)
+- [安全](config/security/index.md)
+  - [AuthorizationPolicy](config/security/authorization-policy.md)
+  - [RequestAuthentication](config/security/request-authentication.md)
+  - [PeerAuthentication](config/security/peer-authentication.md)
+  - [JWTRule](config/security/jwt.md)
 
 ## 开发指南
 

@@ -16,6 +16,8 @@ Host：客户端在尝试连接到服务时使用的地址。
 
 流量的来源也可以在路由规则中进行匹配。这允许为特定的客户环境定制路由。
 
+## 示例
+
 以下是 Kubernetes 上的例子，默认情况下，所有的 HTTP 流量都会被路由到标签为 `version: v1` 的 reviews 服务的 pod 上。此外，路径以 `/wpcatalog/` 或 `/consumercatalog/` 开头的 HTTP 请求将被重写为 `/newcatalog`，并被发送到标签为 `version: v2` 的 pod 上。
 
 ```yaml
