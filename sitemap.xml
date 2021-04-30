@@ -39,6 +39,11 @@
 <url> <loc>https://jimmysong.io/istio-handbook/config/networking/service-entry.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/config/networking/workload-entry.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/config/networking/workload-group.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://jimmysong.io/istio-handbook/config/security/</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://jimmysong.io/istio-handbook/config/security/authorization-policy.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://jimmysong.io/istio-handbook/config/security/request-authentication.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://jimmysong.io/istio-handbook/config/security/peer-authentication.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
+<url> <loc>https://jimmysong.io/istio-handbook/config/security/jwt.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/develop/istio-dev-env.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 <url> <loc>https://jimmysong.io/istio-handbook/action/bookinfo-sample.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> </url>
 </urlset>
